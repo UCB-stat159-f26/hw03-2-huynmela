@@ -6,13 +6,13 @@ import json
 def process_matches(career_js, player_name, birthday):
     player_df = get_matches(career_js)
     match_dates = pd.to_datetime(player_df[0], format="%Y%m%d")
-    player_birthday = pd.to_datetime(birthday, format="%y%m%d")
+    player_birthday = pd.to_datetime(birthday, format="%Y%m%d")
     
     player = pd.DataFrame({
         "Match Date" : match_dates,
         "Player" : player_name, 
         "Opponent" : player_df[11],
-        "Player Age" : (match_dates - player_birthday).dt.days / 365 + 0.25,
+        "Player Age" : (match_dates - player_birthday).dt.days / 365.25,
         "Opponent Age" : [get_opp_age(val, date) for val, date in zip(player_df[16], match_dates)], 
         "Player Won" : player_df[4] == "W"
         })
