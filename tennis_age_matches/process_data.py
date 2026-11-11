@@ -36,3 +36,19 @@ def get_matches(career_js):
     player_df = pd.DataFrame(matches)
     player_df = player_df[player_df[4].isin(["W", "L"])]
     return player_df.reset_index(drop=True)
+
+def find_player(player_name, directory_js):
+    players = get_js_data(directory_js, "playerlist")
+    name_found = player_name.replace(" ", "").lower() # standardize names
+    for val in players: 
+        tour, _, name = val.strip().partition(" ")
+        if name.replace(" ", "").lower() == name_found: return name.strip(), tour
+
+def get_birthday(player_profile):
+    player_profile = "".join(player_profile.split())
+    for var in ["vardob=", "varbd="]:
+        if var in player_profile:
+            after = player_profile.split(var, 1)[1].lstrip("'\"")
+            birthday = after[:8]
+            if len(birthday) == 8 and birthday.isdigit() and birthday is not "00000000":
+                return birthday
