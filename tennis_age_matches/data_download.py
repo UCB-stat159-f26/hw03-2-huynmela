@@ -28,22 +28,3 @@ def get_player_matches(player_name):
     downloaded_files = download_files(files)
     birthday = get_birthday(downloaded_files["profile"], name)
     return process_matches(downloaded_files["career", name, birthday])
-    
-
-# cwd = os.path.dirname(os.path.abspath(__file__))
-# project_root = os.path.dirname(cwd)
-# PATH_TO_DATA = os.path.join(project_root, "data")
-# os.makedirs(PATH_TO_DATA, exist_ok=True) # ensure data directory exists
-
-# files = { 
-#     "SerenaWilliamsCareer.js" : "https://www.tennisabstract.com/jsmatches/SerenaWilliamsCareer.js",
-# }
-
-# for filename, url in files.items():
-# 	get_request = requests.get(url)
-# 	get_request.raise_for_status()
-# 	with open(os.path.join(PATH_TO_DATA, filename), "wb") as file:
-# 		file.write(get_request.content)
-
-# # to run on command line at project root, do 
-# #   `python scripts/data_download.py`
