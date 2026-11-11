@@ -36,30 +36,3 @@ def get_matches(career_js):
     player_df = pd.DataFrame(matches)
     player_df = player_df[player_df[4].isin(["W", "L"])]
     return player_df.reset_index(drop=True)
-
-# cwd = os.path.dirname(os.path.abspath(__file__))
-# project_root = os.path.dirname(cwd)
-# PATH_TO_DATA = os.path.join(project_root, "data")
-
-# serena_js_path = os.path.join(PATH_TO_DATA, "SerenaWilliamsCareer.js")
-
-# with open (serena_js_path, "r") as file:
-    # serena_js = file.read()
-
-# matches = json.loads(serena_js.split("=", 1)[1].strip().rstrip(";"))
-
-# serena_df = pd.DataFrame(matches)
-
-# match_dates = pd.to_datetime(serena_df[0], format="%Y%m%d")
-# opp_birthday = pd.to_datetime(serena_df[16], format="%Y%m%d")
-# sw_birthday = pd.Timestamp("1981-09-26")
-
-# serena = pd.DataFrame({
-#     "Match Date": match_dates,
-#     "Opponent": serena_df[11],
-#     "Williams Age": (match_dates - sw_birthday).dt.days / (365 + 0.25),
-#     "Opponent Age": (match_dates - opp_birthday).dt.days / (365 + 0.25),
-#     # "Williams Won": serena_df[4] == "W",
-# })
-
-# serena.to_csv(os.path.join(PATH_TO_DATA, "serena.csv"), index=False)
