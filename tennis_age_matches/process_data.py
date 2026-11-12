@@ -32,7 +32,7 @@ def _get_js_data(career_js, var):
     return vals
 
 def _get_matches(career_js):
-    matches = _get_js_data(career_js)
+    matches = _get_js_data(career_js, "morematchmx")
     player_df = pd.DataFrame(matches)
     player_df = player_df[player_df[4].isin(["W", "L"])]
     return player_df.reset_index(drop=True)
