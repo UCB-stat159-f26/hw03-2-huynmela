@@ -40,7 +40,7 @@ plt.show()
 To run the tests, at the root of this repository, you must have the package `pytest` installed. Run the following on the command line:
 ```
 python -m pip install -e .pytest
-python -m pytest -v tennis_age_matches/test/test_process_data.py
+python -m pytest -v tennis_age_matches/tests/test_process_data.py
 ```
 This will run four tests, but they do not download the data from online. Instead, they use offline saved data, located in `data/`. This is meant to check the match dates, opponent names, ages, and match results. Additionally, two test the different spellings of the player names and checks the error raised when supplying a name that is not in Tennis Abstract. 
 
