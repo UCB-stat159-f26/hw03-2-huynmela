@@ -21,7 +21,9 @@ def _process_matches(career_js, player_name, birthday):
 # helper functions
 def _get_opp_age(val, match_date):
     val = str(val).strip()
-    opp_birthday = pd.to_datetime(val, format="%Y%m%d")
+    if not (len(val) == 8 and val.isdigit()):
+        return pd.to_numeric(val, errors="coerce")
+    opp_birthday = pd.to_datetime(val, format="%Y%m%d", errors="coerce")
     age = (match_date - opp_birthday).days / 365.25
     return age
 
