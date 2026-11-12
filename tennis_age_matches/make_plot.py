@@ -39,6 +39,6 @@ def plot_player_matches(player):
     ax.spines[:].set_visible(False) 
     ax.set_axisbelow(True)
 
-    plt.title(f"{player["Player"].iloc[0]}'s Professional Matches\n\n", fontweight="bold")
+    plt.title(f"{player['Player'].iloc[0]}'s Professional Matches\n\n", fontweight="bold")
     plt.tight_layout()
     return fig
