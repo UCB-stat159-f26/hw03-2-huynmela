@@ -1,0 +1,15 @@
+[build-system]
+requires = ["setuptools>=70"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "tennis_age_matches"
+version = "0.1.0"
+description = "Package for getting career matches for a defined tennis player and plot the age difference between the player and their opponents across matches."
+readme = "README.md"
+authors = [{name = "Melanie T. Huynh"}]
+requires-python = ">=3.10"
+dependencies = ["matplotlib", "numpy", "pandas", "requests"]
+
+[tool.setuptools]
+packages = ["tennis_age_matches"]
