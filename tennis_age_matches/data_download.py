@@ -3,7 +3,7 @@ from .process_data import process_matches, find_player, get_birthday
 
 tennis_url = "https://www.tennisabstract.com"
 
-def download_files(files):
+def _download_files(files):
     downloaded_files = {}
     for filename, url in files.items():
         get_request = requests.get(url)
@@ -11,11 +11,11 @@ def download_files(files):
         downloaded_files[filename] = get_request.text
     return downloaded_files
     
-def get_player_matches(player_name):
+def _get_player_matches(player_name):
     player_dict = {
         "players" : f"{tennis_url}/mwplayerlist.js"
 	}
-    directory = download_files(player_dict)
+    directory = _download_files(player_dict)
     name, tour = find_player(player_name, directory["players"])
     player_id = "".join(letter for letter in name if letter.isalnum())
     player_profile = "wplayer.cgi" if tour == "(W)" else "player.cgi"
@@ -25,6 +25,6 @@ def get_player_matches(player_name):
         "profile" : f"{tennis_url}/cgi-bin/{player_profile}?p={player_id}"
 	}
 
-    downloaded_files = download_files(files)
+    downloaded_files = _download_files(files)
     birthday = get_birthday(downloaded_files["profile"], name)
     return process_matches(downloaded_files["career", name, birthday])
