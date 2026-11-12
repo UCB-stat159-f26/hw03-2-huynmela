@@ -1,7 +1,7 @@
 import matplotlib.pyplot as plt
 import numpy as np
 
-def match_age_results(ax, player):
+def _match_age_results(ax, player):
     age_diff = [player - opp for player, opp in zip(player["Player_Age"], player["Opponent Age"])] 
     
     win_age = [age for age, result in zip(player["Player_Age"], player["Player Won"]) if result]
@@ -12,7 +12,7 @@ def match_age_results(ax, player):
     ax.scatter(win_age, win_age_diff, label="Match won", c="deepskyblue", alpha=0.5, s=20)
     ax.scatter(loss_age, loss_age_diff, label="Match lost", c="purple", alpha=0.5, s=20)
 
-def set_label_axes(ax, player_age):
+def _set_label_axes(ax, player_age):
     start_age = 2 * int(np.floor(player_age.min() / 2))
     end_age = 2 * int(np.ceil(player_age.max() / 2))
 
@@ -29,8 +29,8 @@ def plot_player_matches(player):
     player = player.dropna(subset=["Player Age", "Opponent Age"])
 
     fig, ax = plt.subplots(figsize=(9, 8))
-    match_age_results(ax, player)
-    set_label_axes(ax, player["Player Age"])
+    _match_age_results(ax, player)
+    _set_label_axes(ax, player["Player Age"])
 
     ax.tick_params(axis="both", which="both", color="lightgray")
     ax.axhline(y=0, color="black", linewidth=0.8)
