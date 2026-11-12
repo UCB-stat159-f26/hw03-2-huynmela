@@ -1,5 +1,5 @@
 import requests
-from .process_data import process_matches, find_player, get_birthday
+from .process_data import process_matches, _find_player, _get_birthday
 
 tennis_url = "https://www.tennisabstract.com"
 
@@ -16,7 +16,7 @@ def _get_player_matches(player_name):
         "players" : f"{tennis_url}/mwplayerlist.js"
 	}
     directory = _download_files(player_dict)
-    name, tour = find_player(player_name, directory["players"])
+    name, tour = _find_player(player_name, directory["players"])
     player_id = "".join(letter for letter in name if letter.isalnum())
     player_profile = "wplayer.cgi" if tour == "(W)" else "player.cgi"
 	
@@ -26,5 +26,5 @@ def _get_player_matches(player_name):
 	}
 
     downloaded_files = _download_files(files)
-    birthday = get_birthday(downloaded_files["profile"], name)
+    birthday = _get_birthday(downloaded_files["profile"], name)
     return process_matches(downloaded_files["career", name, birthday])
