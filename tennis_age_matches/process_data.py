@@ -45,6 +45,7 @@ def _find_player(player_name, directory_js):
     for val in players: 
         tour, _, name = val.strip().partition(" ")
         if name.replace(" ", "").lower() == name_found: return name.strip(), tour
+    raise ValueError(f"{player_name} not found on tennisabstract.com")
 
 def _get_birthday(player_profile):
     player_profile = "".join(player_profile.split())
