@@ -4,9 +4,9 @@ import numpy as np
 def _match_age_results(ax, player):
     age_diff = [player - opp for player, opp in zip(player["Player Age"], player["Opponent Age"])] 
     
-    win_age = [age for age, result in zip(player["Player_Age"], player["Player Won"]) if result]
+    win_age = [age for age, result in zip(player["Player Age"], player["Player Won"]) if result]
     win_age_diff = [diff for diff, result in zip(age_diff, player["Player Won"]) if result]
-    loss_age = [age for age, result in zip(player["Player_Age"], player["Player Won"]) if not result]
+    loss_age = [age for age, result in zip(player["Player Age"], player["Player Won"]) if not result]
     loss_age_diff = [diff for diff, result in zip(age_diff, player["Player Won"]) if not result]
 
     ax.scatter(win_age, win_age_diff, label="Match won", c="deepskyblue", alpha=0.5, s=20)
