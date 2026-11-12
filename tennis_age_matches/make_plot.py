@@ -2,7 +2,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 def _match_age_results(ax, player):
-    age_diff = [player - opp for player, opp in zip(player["Player_Age"], player["Opponent Age"])] 
+    age_diff = [player - opp for player, opp in zip(player["Player Age"], player["Opponent Age"])] 
     
     win_age = [age for age, result in zip(player["Player_Age"], player["Player Won"]) if result]
     win_age_diff = [diff for diff, result in zip(age_diff, player["Player Won"]) if result]
