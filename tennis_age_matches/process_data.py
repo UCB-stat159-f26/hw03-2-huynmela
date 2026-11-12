@@ -3,7 +3,7 @@ import os
 import json
 
 # main function
-def process_matches(career_js, player_name, birthday):
+def _process_matches(career_js, player_name, birthday):
     player_df = _get_matches(career_js)
     match_dates = pd.to_datetime(player_df[0], format="%Y%m%d")
     player_birthday = pd.to_datetime(birthday, format="%Y%m%d")
