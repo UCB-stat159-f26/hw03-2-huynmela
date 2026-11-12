@@ -53,5 +53,5 @@ def _get_birthday(player_profile):
         if var in player_profile:
             after = player_profile.split(var, 1)[1].lstrip("'\"")
             birthday = after[:8]
-            if len(birthday) == 8 and birthday.isdigit() and birthday is not "00000000":
+            if len(birthday) == 8 and birthday.isdigit() and birthday != "00000000":
                 return birthday
