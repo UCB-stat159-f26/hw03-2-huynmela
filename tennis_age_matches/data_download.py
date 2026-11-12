@@ -26,5 +26,5 @@ def get_player_matches(player_name):
 	}
 
     downloaded_files = _download_files(files)
-    birthday = _get_birthday(downloaded_files["profile"], name)
-    return _process_matches(downloaded_files["career", name, birthday])
+    birthday = _get_birthday(downloaded_files["profile"])
+    return _process_matches(downloaded_files["career"], name, birthday)
