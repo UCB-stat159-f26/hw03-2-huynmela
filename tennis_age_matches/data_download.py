@@ -1,5 +1,5 @@
 import requests
-from .process_data import process_matches, _find_player, _get_birthday
+from .process_data import _process_matches, _find_player, _get_birthday
 
 tennis_url = "https://www.tennisabstract.com"
 
@@ -11,7 +11,7 @@ def _download_files(files):
         downloaded_files[filename] = get_request.text
     return downloaded_files
     
-def _get_player_matches(player_name):
+def get_player_matches(player_name):
     player_dict = {
         "players" : f"{tennis_url}/mwplayerlist.js"
 	}
@@ -27,4 +27,4 @@ def _get_player_matches(player_name):
 
     downloaded_files = _download_files(files)
     birthday = _get_birthday(downloaded_files["profile"], name)
-    return process_matches(downloaded_files["career", name, birthday])
+    return _process_matches(downloaded_files["career", name, birthday])
